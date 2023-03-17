@@ -1,4 +1,4 @@
-# 1.	Print only the words that start with letter ‘s’ in the following statement 
+# 1.	Print only the words that start with letter ‘s’ in the following statement
 # St- ‘print only the word that starts with s in this sentence’.
 
 SENTENCE = "print only the word that starts with s in this sentence"

@@ -1,4 +1,4 @@
-# 2.	Print every word from the below sentence which has even number of letters 
+# 2.	Print every word from the below sentence which has even number of letters
 # St- ‘print only the word that starts with s in this sentence’.
 
 SENTENCE = "print only the word that starts with s in this sentence"

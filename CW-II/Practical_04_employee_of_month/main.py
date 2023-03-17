@@ -9,12 +9,14 @@ class Employee:
     def __str__(self):
         return f"{self.name} {self.sales}"
 
+
 def get_employee_of_month(array_of_employees):
     employee_of_month = array_of_employees[0]
     for employee in array_of_employees:
         if employee.sales > employee_of_month.sales:
             employee_of_month = employee
     return employee_of_month
+
 
 if __name__ == "__main__":
     employees = [

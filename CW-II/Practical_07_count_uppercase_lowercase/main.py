@@ -2,7 +2,7 @@
 
 if __name__ == "__main__":
     inp = input("Enter a string: ")
-    count = [0, 0] # lower, upper
+    count = [0, 0]  # lower, upper
     for char in inp:
         if char.isalnum():
             if char.islower():

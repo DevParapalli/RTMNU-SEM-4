@@ -2,9 +2,8 @@
 from random import shuffle
 
 
+if __name__ == "__main__":
 
-if __name__ == "__main__": 
-    
     cups = ["Ball", "Empty", "Empty"]
     print(f"Initial cups: {cups}")
     shuffle(cups)

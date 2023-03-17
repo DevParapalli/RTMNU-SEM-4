@@ -1,4 +1,4 @@
-# 10.	Write a program for validating the user input 
+# 10.	Write a program for validating the user input
 
 SECRET = "password"
 PIN = 2345
