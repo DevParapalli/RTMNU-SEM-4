@@ -9,3 +9,10 @@ if __name__ == "__main__":
         else:
             print(f"Square of {inp} is {inp ** 2}")
             break
+
+"""
+Enter an integer: ff
+Invalid input
+Enter an integer: 34
+Square of 34 is 1156
+"""

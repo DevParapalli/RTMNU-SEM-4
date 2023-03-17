@@ -40,4 +40,9 @@ if __name__ == "__main__":
     account.apply_transaction(transaction)
     print(f"Transaction applied: {transaction}")
     print(f"Account: {account.name} | Balance: {account.balance}")
-    
+
+"""
+Account: John | Balance: 1000
+Transaction applied: Transaction code: 8768 | Account: John | Amount: 100
+Account: John | Balance: 1100
+"""

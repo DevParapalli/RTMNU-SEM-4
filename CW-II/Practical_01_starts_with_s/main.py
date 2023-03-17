@@ -7,3 +7,9 @@ if __name__ == "__main__":
     for word in SENTENCE.split():
         if word[0].lower() == "s":
             print(f"{word}")
+
+"""
+starts
+s
+sentence
+"""

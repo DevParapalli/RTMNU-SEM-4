@@ -25,3 +25,7 @@ if __name__ == "__main__":
         Employee("Jude", 5000),
     ]
     print(f"Employee of the month is {get_employee_of_month(employees).name}")
+
+""" 
+Employee of the month is Jude
+"""

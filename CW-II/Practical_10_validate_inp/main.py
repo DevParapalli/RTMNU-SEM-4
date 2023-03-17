@@ -15,3 +15,10 @@ if __name__ == "__main__":
             print("Incorrect pin")
     else:
         print("Incorrect password")
+
+"""
+Enter the password: password
+Correct password
+Enter the pin: 2345
+Correct pin
+"""

@@ -4,3 +4,5 @@ LIST = [1,1,1,2,2,3,3,4]
 
 if __name__ == "__main__":
     print(list(set(LIST)))
+
+"[1, 2, 3, 4]"

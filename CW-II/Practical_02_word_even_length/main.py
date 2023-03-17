@@ -7,3 +7,14 @@ if __name__ == "__main__":
     for word in SENTENCE.split():
         if len(word) % 2 == 0:
             print(word)
+
+""" 
+only
+word
+that
+starts
+with
+in
+this
+sentence
+"""

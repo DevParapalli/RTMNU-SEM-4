@@ -10,3 +10,8 @@ if __name__ == "__main__":
             else:
                 count[1] += 1
     print(f"Lower case: {count[0]}, Upper case: {count[1]}")
+
+"""
+Enter a string: Dev Parapalli
+Lower case: 10, Upper case: 2
+"""

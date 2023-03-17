@@ -7,3 +7,9 @@ if __name__ == "__main__":
         print(min(x, y))
     else:
         print(max(x, y))
+    
+"""
+Enter x: 12
+Enter y: 13
+13
+"""
