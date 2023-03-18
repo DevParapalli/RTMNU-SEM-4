@@ -2,13 +2,16 @@
 
 import random
 
-
+TRANSACTIONS = []
 class Transaction:
     def __init__(self, account, amount):
         self.account = account
         self.amount = amount
         self.code = random.randint(1000, 9999)
-
+        while self.code in TRANSACTIONS:
+            self.code = random.randint(1000, 9999)
+        TRANSACTIONS.append(self.code)
+        
     def __str__(self):
         return f"Transaction code: {self.code} | Account: {self.account.name} | Amount: {self.amount}"
 

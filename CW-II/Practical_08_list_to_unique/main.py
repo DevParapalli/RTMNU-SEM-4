@@ -2,7 +2,10 @@
 
 LIST = [1, 1, 1, 2, 2, 3, 3, 4]
 
+def get_unique_list(list):
+    return list(set(list))
+
 if __name__ == "__main__":
-    print(list(set(LIST)))
+    print(get_unique_list(LIST))
 
 "[1, 2, 3, 4]"
