@@ -58,8 +58,8 @@ void printStack(struct PostfixStackImpl *stack) {
 
 int main() {
     struct PostfixStackImpl *stack = createStack(100);
-    char *expr = "2 3 4 * +\0";
-    // char *expr = "420 69 +\0";
+    // char *expr = "2 3 4 * +\0";
+    char *expr = "420 69 +\0";
     // char *expr = "3 93 +\0";
     // char *expr = "64 32 /\0";
     int i = 0;
@@ -88,7 +88,7 @@ int main() {
         }
         else {
             int item = expr[i] - '0';
-            while(expr[i] && !_iswhitespace(expr[i+1])) {
+            while(expr[i] && !_iswhitespace(expr[i+1]) && !isOperator(expr[i+1])) {
                 item = item * 10 + expr[i+1] - '0';
                 i++;
             }
