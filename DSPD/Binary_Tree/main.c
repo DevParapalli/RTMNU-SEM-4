@@ -58,13 +58,9 @@ long int sumOfNodes(struct Node* root) {
 }
 
 void printPreorder(struct Node* root) {
-    if (root == NULL) {
-        return;
-    }
+    if (root == NULL) return;
     printf("%d", root->data);
-
     printPreorder(root->left);
-
     printPreorder(root->right);
 }
 
@@ -76,7 +72,7 @@ void printPostorder(struct Node* root) {
 }
 
 void printInorder(struct Node* root) {
-    if (root==NULL) return;
+    if (root == NULL) return;
     printInorder(root->left);
     printf("%d", root->data);
     printInorder(root->right);
