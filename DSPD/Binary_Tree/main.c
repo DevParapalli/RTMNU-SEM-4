@@ -78,12 +78,45 @@ void printInorder(struct Node* root) {
     printInorder(root->right);
 }
 
-void printLevelOrder(struct Node* root) {
-    // TODO
+int treeHeight(struct Node* root) {
+    if (root == NULL) return 0;
+    int leftHeight = treeHeight(root->left);
+    int rightHeight = treeHeight(root->right);
+    if (leftHeight > rightHeight) {
+        return leftHeight + 1;
+    } else {
+        return rightHeight + 1;
+    }
 }
 
-void prettyPrint(struct Node* root) {
-    // TODO
+void printGivenLevel(struct Node* root, int level) {
+    if (root == NULL) return;
+    if (level == 1) {
+        printf("%d\t", root->data);
+    } else if (level > 1) {
+        printGivenLevel(root->left, level - 1);
+        printGivenLevel(root->right, level - 1);
+    }
+}
+
+void printLevelOrder(struct Node* root) {
+    int height = treeHeight(root);
+    for (int i = 1; i <= height; i++) {
+        printf("\n");
+        printGivenLevel(root, i);
+    }
+}
+
+void prettyPrint(struct Node* root, int space) {
+    if (root == NULL) return;
+    space += COUNT;
+    prettyPrint(root->right, space);
+    printf("\n");
+    for (int i = COUNT; i < space; i++) {
+        printf(" ");
+    }
+    printf("%d\n", root->data);
+    prettyPrint(root->left, space);
 }
 
 int main() {
@@ -94,7 +127,10 @@ int main() {
     insertRight(root->left, 5);
     insertLeft(root->right, 6);
     insertRight(root->right, 7);
-    // printTree(root);
-    printf("Sum of all nodes in tree is : %d", sumOfNodes(root));
+    printLevelOrder(root);
+    printf("\n");
+    prettyPrint(root, 0);
+    printf("\n");
+    printf("Sum of all nodes in tree is : %d\n", sumOfNodes(root));
     return 0;
 }
