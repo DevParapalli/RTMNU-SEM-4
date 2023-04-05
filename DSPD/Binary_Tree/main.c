@@ -21,19 +21,6 @@ struct Node* createTree(int data) {
     return root;
 }
 
-void _printTree(struct Node* root, int space) {
-    if (root == NULL) {
-        return;
-    }
-}
-
-void printTree(struct Node* root) {
-    if (root == NULL) {
-        return;
-    }
-    _printTree(root, 0);
-}
-
 void insertLeft(struct Node* root, int data) {
     struct Node* newNode = createNode(data);
     root->left = newNode;
@@ -44,7 +31,7 @@ void insertRight(struct Node* root, int data) {
     root->right = newNode;
 }
 
-void insertBoth(struct Node* root, int dataLeft, int dataRight) {
+void insertLeftRight(struct Node* root, int dataLeft, int dataRight) {
     insertLeft(root, dataLeft);
     insertRight(root, dataRight);
 }
@@ -132,5 +119,7 @@ int main() {
     prettyPrint(root, 0);
     printf("\n");
     printf("Sum of all nodes in tree is : %d\n", sumOfNodes(root));
+    printf("Inorder");
+    printInorder(root);
     return 0;
 }
