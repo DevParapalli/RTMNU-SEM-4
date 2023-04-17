@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #define SIZE 15
 
-
 int compare_function(int a, int b) {
-    return a-b;
+    return a - b;
 }
 
 void swap(int *a, int *b) {

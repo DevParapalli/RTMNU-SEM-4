@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 struct Node {
-    int data; 
+    int data;
     struct Node *next;
 };
 
 struct Node *createNode(int data) {
-    struct Node *node = (struct Node *) malloc(sizeof(struct Node));
+    struct Node *node = (struct Node *)malloc(sizeof(struct Node));
     node->data = data;
     node->next = NULL;
     return node;
@@ -60,8 +60,6 @@ void deleteAtHead(struct Node **head) {
     free(temp);
 }
 
-
-
 void deleteAtTail(struct Node *head) {
     struct Node *current = head;
     while (current->next->next != NULL) {
@@ -84,7 +82,7 @@ void deleteAtPosition(struct Node *head, int position) {
     free(temp);
 }
 
-int main(int argc, char * argv[]) {
+int main(int argc, char *argv[]) {
     struct Node *head = createList(1);
     insertAtHead(&head, 0);
     insertAtTail(head, 2);

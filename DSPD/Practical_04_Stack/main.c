@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Theory: Stack is a one ended list, where elements are added and removed from the same end.
-// Theory: PUSH uses a preincrement as the top should always point to a defined element 
+// Theory: PUSH uses a preincrement as the top should always point to a defined element
 // unless the stack is empty, in which case stack->top is -1
 
 struct IntegerStackImpl {
@@ -12,10 +12,10 @@ struct IntegerStackImpl {
 };
 
 struct IntegerStackImpl *createStack(unsigned size) {
-    struct IntegerStackImpl *stack = (struct IntegerStackImpl *) malloc(sizeof(struct IntegerStackImpl));
+    struct IntegerStackImpl *stack = (struct IntegerStackImpl *)malloc(sizeof(struct IntegerStackImpl));
     stack->size = size;
     stack->top = -1;
-    stack->array = (int *) malloc(stack->size * sizeof(int));
+    stack->array = (int *)malloc(stack->size * sizeof(int));
     return stack;
 }
 

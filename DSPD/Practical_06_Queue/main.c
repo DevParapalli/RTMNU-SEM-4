@@ -8,10 +8,10 @@ struct IntegerQueueImpl {
 };
 
 struct IntegerQueueImpl *createQueue(unsigned size) {
-    struct IntegerQueueImpl *queue = (struct IntegerQueueImpl *) malloc(sizeof(struct IntegerQueueImpl));
+    struct IntegerQueueImpl *queue = (struct IntegerQueueImpl *)malloc(sizeof(struct IntegerQueueImpl));
     queue->size = size;
     queue->front = queue->rear = -1;
-    queue->array = (int *) malloc(queue->size * sizeof(int));
+    queue->array = (int *)malloc(queue->size * sizeof(int));
     return queue;
 }
 
@@ -22,7 +22,6 @@ int isFull(struct IntegerQueueImpl *queue) {
 int isEmpty(struct IntegerQueueImpl *queue) {
     return queue->front == -1;
 }
-
 
 void enqueue(struct IntegerQueueImpl *queue, int item) {
     if (isFull(queue)) {
@@ -58,8 +57,7 @@ void printQueue(struct IntegerQueueImpl *queue) {
     printf("\n");
 }
 
-
-int main(int argc, char * argv[]) {
+int main(int argc, char *argv[]) {
     struct IntegerQueueImpl *queue = createQueue(100);
     enqueue(queue, 10);
     enqueue(queue, 20);
@@ -78,5 +76,3 @@ int main(int argc, char * argv[]) {
 
     printQueue(queue);
 }
-
-

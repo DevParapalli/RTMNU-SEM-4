@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int compare_function(int a, int b) {
-    return a-b;
+    return a - b;
 }
 
 void swap(int *a, int *b) {
@@ -17,15 +17,15 @@ void insertion_sort(int arr[], int size, int (*cmp)(int, int)) {
         key = arr[i];
         j = i - 1;
 
-        while(j>= 0 && cmp(arr[j], key) > 0) {
-            arr[j+1] = arr[j];
+        while (j >= 0 && cmp(arr[j], key) > 0) {
+            arr[j + 1] = arr[j];
             j = j - 1;
         }
-        arr[j+1] = key;
+        arr[j + 1] = key;
     }
 }
 
-int main(int argc, char * argv) {
+int main(int argc, char *argv) {
     int arr[15] = {5, 2, 4, 6, 1, 3, 2, 6, 5, 4, 3, 2, 9, 8, 7};
     printf("     UNSORTED: ");
     for (int i = 0; i < 15; i++) {

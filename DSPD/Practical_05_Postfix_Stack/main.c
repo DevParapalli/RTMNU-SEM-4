@@ -8,10 +8,10 @@ struct PostfixStackImpl {
 };
 
 struct PostfixStackImpl *createStack(unsigned size) {
-    struct PostfixStackImpl *stack = (struct PostfixStackImpl *) malloc(sizeof(struct PostfixStackImpl));
+    struct PostfixStackImpl *stack = (struct PostfixStackImpl *)malloc(sizeof(struct PostfixStackImpl));
     stack->size = size;
     stack->top = -1;
-    stack->array = (int *) malloc(stack->size * sizeof(int));
+    stack->array = (int *)malloc(stack->size * sizeof(int));
     return stack;
 }
 
@@ -43,7 +43,7 @@ int pop(struct PostfixStackImpl *stack) {
 }
 
 int _iswhitespace(char c) {
-    return c == ' ' || c == '\t' || c =='\0';
+    return c == ' ' || c == '\t' || c == '\0';
 }
 
 void printStack(struct PostfixStackImpl *stack) {
@@ -63,7 +63,7 @@ int main() {
     // char *expr = "3 93 +\0";
     // char *expr = "64 32 /\0";
     int i = 0;
-    while(expr[i]) {
+    while (expr[i]) {
         if (_iswhitespace(expr[i])) {
             i++;
             continue;
@@ -85,17 +85,16 @@ int main() {
                     push(stack, a / b);
                     break;
             }
-        }
-        else {
+        } else {
             int item = expr[i] - '0';
-            while(expr[i] && !_iswhitespace(expr[i+1]) && !isOperator(expr[i+1])) {
-                item = item * 10 + expr[i+1] - '0';
+            while (expr[i] && !_iswhitespace(expr[i + 1]) && !isOperator(expr[i + 1])) {
+                item = item * 10 + expr[i + 1] - '0';
                 i++;
             }
             push(stack, item);
         }
         i++;
     }
-    // printStack(stack); // This simply prints the result, since the stack is empty now.
+    // printStack(stack); // This simply prints the result, since the stack only contains the result.
     printf("Postfix Expression '%s' evaluates to %d", expr, pop(stack));
 }
