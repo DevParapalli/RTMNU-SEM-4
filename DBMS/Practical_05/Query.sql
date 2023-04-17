@@ -6,7 +6,7 @@ WHERE ec.salary = (
         FROM Emp_Company AS ec1
     );
 
--- Query 2: List the name of employee having maximum in their company.
+-- Query 2: List the name of employee having maximum salary in their company.
 SELECT ec.ename
 FROM Emp_Company AS ec
 WHERE ec.salary = (
