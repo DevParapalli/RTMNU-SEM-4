@@ -75,3 +75,23 @@ Example:
 
 SELECT COUNT(DISTINCT category) FROM products;
 ```
+
+- In SQL, the GROUP BY clause is used with aggregate functions to group the data based on one or more columns, and then perform calculations such as MIN, MAX, AVG, or COUNT on each group separately.
+
+Note that you can group by multiple columns by including them in the GROUP BY clause, separated by commas.
+
+Example:
+
+```sql
+
+SELECT category, supplier, AVG(price) FROM products GROUP BY category, supplier;
+```
+
+Also, note that if you want to filter the groups based on some condition, you can use the HAVING clause after the GROUP BY clause. The HAVING clause is similar to the WHERE clause, but it filters groups instead of individual rows.
+
+Example:
+
+```sql
+
+SELECT category, COUNT(*) FROM products GROUP BY category HAVING COUNT(*) > 5;
+```
