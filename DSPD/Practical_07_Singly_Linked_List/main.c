@@ -21,7 +21,10 @@ struct Node *createList(int data) {
 void printList(struct Node *head) {
     struct Node *current = head;
     while (current != NULL) {
-        printf("%d\t", current->data);
+        if (current->next == NULL)
+            printf("%d", current->data);
+        else
+            printf("%d->", current->data);
         current = current->next;
     }
     printf("\n");
