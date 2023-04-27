@@ -34,14 +34,16 @@ WHERE ec.ename IN (
 
 -- Query 5: Find the name of company having highest average salary.
 SELECT ec.cname,
-    ec.salary
+    avg(ec.salary) AS avg_salary
 FROM Emp_Company AS ec
-WHERE ec.cname = (
-        SELECT cname
-        FROM Emp_Company
-        WHERE salary = (
-                SELECT max(salary)
-                FROM Emp_Company
+GROUP BY ec.cname
+HAVING avg(ec.salary) = (
+        SELECT max(avg_salary)
+        FROM (
+                SELECT ec1.cname,
+                    avg(ec1.salary) AS avg_salary
+                FROM Emp_Company AS ec1
+                GROUP BY ec1.cname
             )
     );
 
