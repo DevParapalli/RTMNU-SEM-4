@@ -15,7 +15,7 @@
 
 - <https://www.scaler.com/topics/dbms/normalization-in-dbms/>
 - <https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description>
--<https://en.wikipedia.org/wiki/Database_normalization>
+- <https://en.wikipedia.org/wiki/Database_normalization>
 
 ### Theory Content
 
