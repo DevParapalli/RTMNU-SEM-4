@@ -22,3 +22,7 @@ def find_closure(functional_dependencies, closure_of):
 if __name__ == "__main__":
     print(find_closure(FUNCTIONAL_DEPS, "A"))
     print(find_closure(FUNCTIONAL_DEPS, "B"))
+    print(find_closure(FUNCTIONAL_DEPS, "C"))
+    print(find_closure(FUNCTIONAL_DEPS, "D"))
+    print(find_closure(FUNCTIONAL_DEPS, "E"))
+    print(find_closure(FUNCTIONAL_DEPS, "BC"))

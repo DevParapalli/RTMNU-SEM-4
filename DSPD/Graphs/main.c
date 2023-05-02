@@ -1,89 +1,79 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_VERTICES 100
-
-typedef struct node {
+struct AdjacencyListNode {
     int vertex;
-    struct node *next;
-} node;
+    struct AdjacencyListNode *next;
+};
 
-node* createNode(int v) {
-    node* newNode = malloc(sizeof(node));
-    newNode->vertex = v;
+struct AdjacencyList {
+    struct AdjacencyListNode *head;
+};
+
+struct Graph {
+    int vertices;
+    struct AdjacencyList *array;
+};
+
+struct AdjacencyListNode *createAdjacencyListNode(int dest) {
+    struct AdjacencyListNode *newNode = (struct AdjacencyListNode *)malloc(sizeof(struct AdjacencyListNode));
+    newNode->vertex = dest;
     newNode->next = NULL;
     return newNode;
 }
 
-void addEdge(node** graph, int u, int v) {
-    // add an edge between vertices u and v
-    node* newNode = createNode(v);
-    newNode->next = graph[u];
-    graph[u] = newNode;
+struct Graph *createGraph(int vertices) {
+    struct Graph *graph = (struct Graph *)malloc(sizeof(struct Graph));
+    graph->vertices = vertices;
+    graph->array = (struct AdjacencyList *)malloc(vertices * sizeof(struct AdjacencyList));
+    for (int i = 0; i < vertices; i++) {
+        graph->array[i].head = NULL;
+    }
+    return graph;
 }
 
-void printGraph(node** graph, int n) {
-    for (int i = 0; i < n; i++) {
-        printf("Adjacency list for vertex %d: ", i);
-        node* currentNode = graph[i];
-        while (currentNode != NULL) {
-            printf("%d -> ", currentNode->vertex);
-            currentNode = currentNode->next;
-        }
-        printf("NULL\n");
+void addEdge(struct Graph * graph, int src, int dest) {
+    struct AdjacencyListNode *check = NULL;
+    struct AdjacencyListNode *newNode = createAdjacencyListNode(dest);
+
+    if (graph ->array[src].head == NULL) {
+        newNode->next = graph->array[src].head;
+        graph->array[src].head = newNode;
     }
+    else {
+        check = graph->array[src].head;
+        while(check->next != NULL) {
+            check = check->next;
+        }
+        check->next = newNode;
+    }
+
+    // If directed, comment this line
+    addEdge(graph, dest, src);
 }
 
-void BFS(node** graph, int n, int start) {
-    int visited[MAX_VERTICES] = {0};
-    int queue[MAX_VERTICES];
-    int front = 0, rear = -1;
-    queue[++rear] = start;
-    visited[start] = 1;
-    while (front <= rear) {
-        int u = queue[front++];
-        printf("%d ", u);
-        node* currentNode = graph[u];
-        while (currentNode != NULL) {
-            int v = currentNode->vertex;
-            if (!visited[v]) {
-                visited[v] = 1;
-                queue[++rear] = v;
-                printf("%d ", v); // visit the node lmao
-            }
-            currentNode = currentNode->next;
+void printGraph(struct Graph *graph) {
+    for (int i = 0; i < graph->vertices; i++) {
+        struct AdjacencyListNode *check = graph->array[i].head;
+        printf("Adjacency list of vertex %d\n", i);
+        while(check != NULL) {
+            printf("%d -> ", check->vertex);
+            check = check->next;
         }
+        printf("\n");
     }
-    printf("\n");
 }
-
-void DFS(node** graph, int n, int start, int visited[]) {
-    visited[start] = 1;
-    printf("%d ", start);
-    node* currentNode = graph[start];
-    while (currentNode != NULL) {
-        int v = currentNode->vertex;
-        if (!visited[v]) {
-            DFS(graph, n, v, visited);
-            printf("%d ", v); // visit the node lmao
-        }
-        currentNode = currentNode->next;
-    }
-} 
 
 int main() {
-    node* graph[MAX_VERTICES];
-    int n, m;
-    scanf("%d %d", &n, &m);
-    for (int i = 0; i < n; i++) {
-        graph[i] = NULL;
-    }
-    for (int i = 0; i < m; i++) {
-        int u, v;
-        scanf("%d %d", &u, &v);
-        addEdge(graph, u, v);
-        addEdge(graph, v, u); // comment this out for directed graphs
-    }
-    printGraph(graph, n);
+    int vertices = 5;
+    struct Graph *graph = createGraph(vertices);
+    addEdge(graph, 0, 1);
+    addEdge(graph, 0, 4);
+    addEdge(graph, 1, 2);
+    addEdge(graph, 1, 3);
+    addEdge(graph, 1, 4);
+    addEdge(graph, 2, 3);
+    addEdge(graph, 3, 4);
+    printGraph(graph);
     return 0;
 }
