@@ -42,6 +42,20 @@ int precedenceOrder(char c) {
     }
 }
 
+int associativity(char c) {
+    switch (c) {
+        case '^':
+            return 1;
+        case '*':
+        case '/':
+        case '+':
+        case '-':
+            return 0;
+        default:
+            return -1;
+    }
+}
+
 int pop(struct StackImpl *stack) {
     if (isEmpty(stack)) {
         return -1;
@@ -59,7 +73,7 @@ void push(struct StackImpl *stack, int item) {
 
 int main(int argc, char *argv[]) {
     struct StackImpl *stack = createStack(100);
-    char *infix = "A-(B/C+(D^E*F)/G)*H";
+    char *infix = "k+l+(m^n^o)*p";
     char *postfix = (char *)malloc(100 * sizeof(char));
     int i = 0, j = 0;
     while (infix[i] != '\0') {
@@ -73,10 +87,26 @@ int main(int argc, char *argv[]) {
                 }
                 pop(stack);
             } else {
-                while (!isEmpty(stack) && stack->array[stack->top] != '(' && precedenceOrder(infix[i]) <= precedenceOrder(stack->array[stack->top])) {
-                    postfix[j++] = pop(stack);
+                // If incoming operator has higher precedence than top of stack, push
+                if (isEmpty(stack) || precedenceOrder(infix[i]) > precedenceOrder(stack->array[stack->top])) {
+                    push(stack, infix[i]);
                 }
-                push(stack, infix[i]);
+                // If incoming operator has equal precedence to top of stack, check associativity
+                else if (precedenceOrder(infix[i]) == precedenceOrder(stack->array[stack->top])) {
+                    if (associativity(infix[i]) == 1) {
+                        push(stack, infix[i]);
+                    } else {
+                        postfix[j++] = pop(stack);
+                        push(stack, infix[i]);
+                    }
+                }
+                // If incoming operator has lower precedence than top of stack, pop and print until empty or higher precedence
+                else {
+                    while (!isEmpty(stack) && precedenceOrder(infix[i]) < precedenceOrder(stack->array[stack->top])) {
+                        postfix[j++] = pop(stack);
+                    }
+                    push(stack, infix[i]);
+                }
             }
         } else {
             postfix[j++] = infix[i];
