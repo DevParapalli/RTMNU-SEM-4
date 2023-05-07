@@ -73,7 +73,7 @@ void push(struct StackImpl *stack, int item) {
 
 int main(int argc, char *argv[]) {
     struct StackImpl *stack = createStack(100);
-    char *infix = "k+l+(m^n^o)*p";
+    char *infix = "a+b*(c^d-e)^(f+g*h)-i";
     char *postfix = (char *)malloc(100 * sizeof(char));
     int i = 0, j = 0;
     while (infix[i] != '\0') {
@@ -93,14 +93,17 @@ int main(int argc, char *argv[]) {
                 }
                 // If incoming operator has equal precedence to top of stack, check associativity
                 else if (precedenceOrder(infix[i]) == precedenceOrder(stack->array[stack->top])) {
+                    // If right associative, push
                     if (associativity(infix[i]) == 1) {
                         push(stack, infix[i]);
                     } else {
+                        // if left associative, pop, print then add the current one.
                         postfix[j++] = pop(stack);
                         push(stack, infix[i]);
                     }
                 }
                 // If incoming operator has lower precedence than top of stack, pop and print until empty or higher precedence
+                // Then add the current one.
                 else {
                     while (!isEmpty(stack) && precedenceOrder(infix[i]) < precedenceOrder(stack->array[stack->top])) {
                         postfix[j++] = pop(stack);
