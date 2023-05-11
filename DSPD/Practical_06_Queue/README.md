@@ -13,4 +13,16 @@ The basic operations that can be performed on a queue are:
 - IsEmpty: checks if the queue is empty.
 - IsFull: checks if the queue is full.
 
+Enqueue Algorithm:
+
+1. Check if the queue is full. If it is, raise an error or return a failure message.
+2. If the queue is not full, add the new element to the end of the queue.
+3. Increment the rear pointer to point to the next available position in the queue.
+
+Dequeue Algorithm:
+
+1. Check if the queue is empty. If it is, raise an error or return a failure message.
+2. If the queue is not empty, remove the element at the front of the queue and return it.
+3. Increment the front pointer to point to the next element in the queue.
+
 A queue can be implemented using an array, a linked list, or a circular buffer. Queues are used in many applications such as operating systems, network protocols, and simulation systems.
