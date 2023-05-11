@@ -69,8 +69,8 @@ int main() {
             continue;
         }
         if (isOperator(expr[i])) {
-            int a = pop(stack);
             int b = pop(stack);
+            int a = pop(stack);
             switch (expr[i]) {
                 case '+':
                     push(stack, a + b);
