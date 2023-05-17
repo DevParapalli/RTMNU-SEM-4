@@ -29,16 +29,13 @@ For example, let's say we have a database schema with the following relation:
 
 We identify the following functional dependencies:
 
-
 `A -> B`
 
 `B -> C, D`
 
 `D -> E, F`
 
-
 The last two functional dependencies do not meet the BCNF criteria, so we create these schemas:
-
 
 `R1(D, E, F) satisfying D -> E, F` where D is the key `(BCNF)`
 
@@ -56,36 +53,36 @@ Testing for lossless decomposition is done by checking if the closure of the int
 
 For Example:
 
-If we have a schema `R(A, B, C, D)` with functional dependencies 
+If we have a schema `R(A, B, C, D)` with functional dependencies
 
-`A -> B`, 
+`A -> B`,
 
-`B -> C` and 
+`B -> C` and
 
-`C -> D` 
+`C -> D`
 
-and we decompose it into 
+and we decompose it into
 
-`R1(A, B)` and 
+`R1(A, B)` and
 
-`R2(B, C, D)`, 
+`R2(B, C, D)`,
 
 the common attribute `(B)` can derive the second relation in its entirety `(B⁺ = BCD)`. Therefore, this is a lossless decomposition.
 
-If we have a schema 
-`R(A, B, C, D)` with functional dependencies 
+If we have a schema
+`R(A, B, C, D)` with functional dependencies
 
-`A -> B`, 
+`A -> B`,
 
-`BC -> D`, 
+`BC -> D`,
 
-`C -> D` 
+`C -> D`
 
-and we decompose it into 
+and we decompose it into
 
-`R1(A, B)` and 
+`R1(A, B)` and
 
-`R2(B, C, D)`, 
+`R2(B, C, D)`,
 
 the common attribute cannot derive any of the relations in their entirety `(B⁺ = B)`. Therefore, this is a lossy decomposition.
 
@@ -93,7 +90,7 @@ For more complicated decompositions, we use the Woolman Algorithm
 
 The Woolman algorithm has 3 parts.
 
-1. Initialization : `A table is created with the attributes of the original relation as the columns and the smaller relations as the rows. The table is then filled with the values of the smaller relations, with a(column) if attribute is present and b(row, column) if attribute is not present.`
+1. Initialization : `A table is created with the attributes of the original relation as the columns and the smaller relations as the rows. The table is then filled with the values related to the smaller relations, with a(column) if attribute is present and b(row, column) if attribute is not present.`
 2. Processing: `For every functional dependency in the original relation, we check if the smaller relations commonly contain the attributes on the left hand side of the functional dependency. If they do, we mark the right hand side with the common value in the table, preferring a over b. If they do not, we leave it as it is.`
 3. Termination: `The algorithm terminates when either one of the rows is completely filled with a or, when the table is not changed in a pass. If there is a row that contains all a, then the decomposition is lossless. If not, then the decomposition is lossy.`
 
