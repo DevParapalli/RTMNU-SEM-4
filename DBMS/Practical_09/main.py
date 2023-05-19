@@ -101,6 +101,6 @@ def woolman_algorithm_test(old_rel: list[str], new_rel: list[list[str]], fd: lis
     
 if __name__ == '__main__':
     if woolman_algorithm_test(O_REL, NEW_REL, FD):
-        print("The given relation decomposition is NOT LOSSY.")
+        print("The given relation decomposition is LOSSLESS.")
     else:
         print("The given relation decomposition is LOSSY.")
