@@ -36,4 +36,4 @@ Let's consider the following binary tree:
 - Preorder traversal: 1 2 4 5 3
 - Postorder traversal: 4 5 2 3 1
 
-Note that the order of traversal affects the order in which the nodes are visited.
+Note that the order of traversal affects the order in which the nodes are visited
