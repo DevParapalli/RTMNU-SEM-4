@@ -15,4 +15,4 @@ b. For each of the node's neighbors that have not been visited, mark them as vis
 
 BFS is useful in finding the shortest path between two nodes in an unweighted graph, or in finding the minimum number of moves required to reach a target node in a game, among other applications.
 
-![DFS](BFS.png)
+![BFS](BFS.png)
