@@ -11,7 +11,7 @@ void merge(int arr[], int l, int m, int r) {
     
     for(; lp < m - l + 1 && rp < r - m;) {
         if (leftArray[lp] <= rightArray[rp]) arr[ap++] = leftArray[lp++];
-        else arr[ap++] = rightArray[lp++];
+        else arr[ap++] = rightArray[rp++];
     }
     
     while (lp < m - l +1) arr[ap++] = leftArray[lp++];
